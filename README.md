@@ -75,3 +75,31 @@ OPEN_AI_KEY=your-api-key
 ```
 
 Alternatively, you can set the `SPRING_AI_OPENAI_API_KEY` environment variable.
+
+## Voice Control
+
+The voice control functionality is handled by the `src/main/resources/static/js/script.js` file. This file contains the logic for establishing a WebRTC connection with the OpenAI API and defining the voice commands that can be used to interact with the application.
+
+### WebRTC Connection with OpenAI
+
+The `initializeWebRTC` function is responsible for setting up the WebRTC connection. It performs the following steps:
+
+1.  **Gets an ephemeral token:** It fetches a temporary token from the server to authenticate with the OpenAI API.
+2.  **Creates a peer connection:** It creates a new `RTCPeerConnection` object to handle the WebRTC session.
+3.  **Sets up audio playback:** It configures an audio element to play the audio received from the OpenAI API.
+4.  **Adds local audio track:** It captures the user's microphone input and adds it to the peer connection.
+5.  **Creates a data channel:** It creates a data channel to send and receive messages from the OpenAI API.
+6.  **Creates and sends an offer:** It creates an SDP offer and sends it to the OpenAI API to initiate the connection.
+7.  **Sets the remote description:** It receives an SDP answer from the OpenAI API and sets it as the remote description.
+
+### Voice Control Tools
+
+The `configureTools` function defines the voice commands that can be used to interact with the application. These commands are sent to the OpenAI API as a list of tools that the model can use.
+
+The following voice commands are available:
+
+*   **`changeBackgroundColor(color)`:** Changes the background color of the webpage.
+*   **`searchByDescriptionOrCategory(keyword)`:** Searches for transactions by description or category.
+*   **`displayTransactionsList()`:** Displays the list of all transactions.
+*   **`deleteATransaction(id)`:** Deletes a transaction with the specified ID.
+*   **`addATransaction(amount, date, category, description)`:** Adds a new transaction.
