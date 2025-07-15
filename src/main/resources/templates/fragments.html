@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="transactionRows(transactions)">
+    <tr th:each="t : ${transactions}" class="border-b hover:bg-gray-50">
+        <td th:text="${t.id}" class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">00</td>
+        <td th:text="${t.date}" class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">2024-07-10</td>
+        <td th:text="${t.description}" class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">Desc</td>
+        <td th:text="${t.category}" class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Cat</td>
+        <td th:text="${t.amount}" class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">$0.00</td>
+        <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+            <a th:href="@{'/transactions/edit/' + ${t.id}}" class="text-blue-500 hover:underline">Edit</a>
+            <form th:action="@{'/transactions/delete/' + ${t.id}}" method="post" class="inline">
+                <button type="submit" class="text-red-500 hover:underline ml-2 cursor-pointer"
+                        onclick="return confirm('Delete ?')">Delete</button>
+            </form>
+        </td>
+    </tr>
+</th:block>
+</body>
+</html>

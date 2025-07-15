@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<body>
+<div layout:fragment="content">
+    <div class="px-40 flex flex-1 justify-center py-5">
+        <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+                <p class="text-[#111518] tracking-light text-[32px] font-bold leading-tight min-w-72">Transactions</p>
+                <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal"
+                >
+                    <span class="truncate">New Transaction</span>
+                </button>
+            </div>
+            <div class="px-4 py-3">
+                <label class="flex flex-col min-w-40 h-12 w-full">
+                    <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                        <div
+                                class="text-[#637988] flex border-none bg-[#f0f3f4] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                                data-icon="MagnifyingGlass"
+                                data-size="24px"
+                                data-weight="regular"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                                <path
+                                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <input
+                                placeholder="Search transactions"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111518] focus:outline-0 focus:ring-0 border-none bg-[#f0f3f4] focus:border-none h-full placeholder:text-[#637988] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                                value=""
+                        />
+                    </div>
+                </label>
+            </div>
+            <div class="flex gap-3 p-3 flex-wrap pr-4">
+                <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f3f4] pl-4 pr-2">
+                    <p class="text-[#111518] text-sm font-medium leading-normal">All</p>
+                    <div class="text-[#111518]" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                        </svg>
+                    </div>
+                </button>
+                <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f3f4] pl-4 pr-2">
+                    <p class="text-[#111518] text-sm font-medium leading-normal">Income</p>
+                    <div class="text-[#111518]" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                        </svg>
+                    </div>
+                </button>
+                <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f3f4] pl-4 pr-2">
+                    <p class="text-[#111518] text-sm font-medium leading-normal">Expenses</p>
+                    <div class="text-[#111518]" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <div class="px-4 py-3 @container">
+                <div class="flex overflow-hidden rounded-lg border border-[#dce1e5] bg-white">
+                    <table class="flex-1">
+                        <thead>
+                        <tr class="bg-white">
+                            <th class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 px-4 py-3 text-left text-[#111518] w-[400px] text-sm font-medium leading-normal">Date</th>
+                            <th class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 px-4 py-3 text-left text-[#111518] w-[400px] text-sm font-medium leading-normal">
+                                Description
+                            </th>
+                            <th class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 px-4 py-3 text-left text-[#111518] w-[400px] text-sm font-medium leading-normal">
+                                Category
+                            </th>
+                            <th class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 px-4 py-3 text-left text-[#111518] w-[400px] text-sm font-medium leading-normal">Amount</th>
+                            <th class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 px-4 py-3 text-left text-[#111518] w-60 text-sm font-medium leading-normal">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-26
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Grocery shopping at SuperMart
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                Groceries
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$75.50</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-25
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Salary deposit
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Income</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                +$3,500.00
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-24
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Dinner at The Bistro
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Dining</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$60.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-23
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Online purchase from TechGadgets
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                Electronics
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$250.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-22
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Rent payment
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Housing</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                -$1,500.00
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-21
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Coffee at Cafe Aroma
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Coffee</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$5.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-20
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">Gasoline</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                Transportation
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$40.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-19
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Movie tickets
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                Entertainment
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$30.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-18
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Gym membership
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Fitness</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$50.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-t border-t-[#dce1e5]">
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">
+                                2024-07-17
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240 h-[72px] px-4 py-2 w-[400px] text-[#111518] text-sm font-normal leading-normal">
+                                Transfer to savings account
+                            </td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">Savings</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480 h-[72px] px-4 py-2 w-[400px] text-[#637988] text-sm font-normal leading-normal">-$500.00</td>
+                            <td class="table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                <button
+                                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f0f3f4] text-[#111518] text-sm font-medium leading-normal w-full"
+                                >
+                                    <span class="truncate">Completed</span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <style>
+                    @container(max-width:120px){.table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-120{display: none;}}
+                    @container(max-width:240px){.table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-240{display: none;}}
+                    @container(max-width:360px){.table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-360{display: none;}}
+                    @container(max-width:480px){.table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-480{display: none;}}
+                    @container(max-width:600px){.table-336a5181-8b1b-46e1-b877-e8b0d843cccd-column-600{display: none;}}
+                </style>
+            </div>
+        </div>
+    </div>
+    <footer class="flex justify-center">
+        <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+                <p class="text-[#637988] text-base font-normal leading-normal">@2025 PLE. All rights reserved.</p>
+            </footer>
+        </div>
+    </footer>
+</div>
+<th:block layout:fragment="script-content">
+    <!-- Add additional scripts there that are only needed for this page (Application wide scripts should be added in layout/main.html) -->
+</th:block>
+</body>
+</html>
